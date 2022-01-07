@@ -1,4 +1,6 @@
 # Algorithm Studying
-Using C++
+Learn algorithms to prepare for coding tests.
 
-from https://www.youtube.com/channel/UCwFszkz9NbnQyQn5YbDfZtg
+Language: C++
+
+reference: https://www.youtube.com/channel/UCwFszkz9NbnQyQn5YbDfZtg
