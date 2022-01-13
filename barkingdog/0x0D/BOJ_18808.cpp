@@ -35,6 +35,7 @@ void setValue(int dir){
                 if(cur_vle == board[i][j]){
                     board[i][cur_idx++] =  cur_vle;
                     cur_vle = -1;
+
                 } else {
                     board[i][cur_idx++] = cur_vle;
                 }
