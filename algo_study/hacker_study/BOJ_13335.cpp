@@ -24,8 +24,8 @@ int main(void){
         truckQ.push(truck);        
     }
     while(1){       
-        if(onBridge.size() ==0 && truckQ.empty()) break;
-        if(onBridge.size() !=0 ){
+        if(onBridge.empty()&& truckQ.empty()) break;
+        if(!onBridge.empty()){
             if(onBridge.front().second == 0) { //가장 앞이 도착
                 currentWeight -= onBridge.front().first; //무게 빼주기
                 onBridge.erase(onBridge.begin());                
