@@ -1,14 +1,13 @@
 #include <iostream>
 #include <algorithm>
 #include <cmath>
+#include <limits.h>
 
 using namespace std;
 
-int cnt = 0;
-long int mxvl = -1 * (2e+62+1);
-int mxcnt = 0;
+
 int n;
-int arr[100001];
+long long arr[100001];
 
 int main(void){
     ios::sync_with_stdio(0);
@@ -21,30 +20,21 @@ int main(void){
     }
 
     sort(arr, arr+n);
+    int cnt = 0;
+    long long mxvl = -(1ll << 62) -1;
 
-    for(int i=0; i<n; i++){
-        if(i == 0){
-            cnt++;
-            mxvl = arr[i];
-            continue;
-        }
-        if (arr[i] == arr[i-1]){ //같을 때 카운트 증가
-            cnt++;
-        }
-        else {
-            if(cnt > mxcnt) {
+    int mxcnt = 0;
+    for(int i=0; i< n; i++){
+        if(i == 0 || arr[i-1] == arr[i]) cnt++;
+        else{
+            if(cnt > mxcnt){
                 mxcnt = cnt;
-                cnt = 0;
                 mxvl = arr[i-1];
-            } else{
-                cnt = 0;
             }
+            cnt = 1;
         }
     }
-    if (cnt > mxcnt){
-        mxcnt = cnt;
-        mxvl = arr[n-1];
-    }
+    if(cnt > mxcnt) mxvl = arr[n-1];
     cout << mxvl;
 
 }
