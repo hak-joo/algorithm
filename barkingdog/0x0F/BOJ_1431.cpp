@@ -7,26 +7,22 @@ using namespace std;
 int n;
 string arr[51];
 
+int sum(string a){
+    int ret = 0;
+    for(int i=0; i<a.length(); i++){
+        if((a[i]-'0') >= 1 && (a[i] - '0') <= 9 ) ret+= a[i]-'0';
+    }
+    return ret;
+}
+
 bool cmp(string A, string B){
-    int sumA = 0;
-    int sumB = 0;
-    if(A.size() < B.size())
-        return true;
-    else if (A.size () == B.size()){
-        for(int i=0; i<A.size(); i++){
-            if('0' <= A[i] && A[i] <= '9')
-                sumA += A[i];
-            if('0' <= B[i] && B[i] <= '9')
-                sumB += B[i]; 
-        }
-        if (sumA < sumB) return true;
-        else if (sumA > sumB) return false;
-        else{
-            if (A < B) return true;
-            else return false;
-        }
-    } else{
-        return false;
+    if(A.size() != B.size()) return A.size() < B.size();
+    else{
+        int aSize = sum(A);
+        int bSize = sum(B);
+        if(aSize != bSize){
+            return aSize < bSize;
+        } else return A<B;
     }
 }
 
@@ -37,6 +33,6 @@ int main(void){
     }
     sort(arr, arr + n, cmp);
     for(int i=0; i<n; i++){
-        cout << arr[i] << " ";
+        cout << arr[i] << "\n";
     }
 }
